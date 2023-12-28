@@ -1,0 +1,112 @@
+import random
+
+# Class to represent a Pokémon
+class Pokemon:
+    def __init__(self, name, type, level, experience):
+        self.name = name
+        self.type = type
+        self.level = level
+        self.experience = experience
+
+# Function to display Pokémon information
+def display_pokemon(pokemon):
+    print(f"Name: {pokemon.name}")
+    print(f"Type: {pokemon.type}")
+    print(f"Level: {pokemon.level}")
+    print(f"Experience: {pokemon.experience}")
+
+# Function to train a Pokémon
+def train_pokemon(pokemon):
+    experience_gain = random.randint(1, 10)
+    print(f"Training {pokemon.name}...")
+    print(f"Gained {experience_gain} experience points!")
+
+    pokemon.experience += experience_gain
+    if pokemon.experience >= 100:
+        pokemon.experience -= 100
+        pokemon.level += 1
+        print(f"{pokemon.name} leveled up to level {pokemon.level}!")
+
+        # Check if the Pokémon evolves at a certain level
+        if pokemon.level == 3:
+            print(f"{pokemon.name} is evolving!")
+            evolve_pokemon(pokemon)
+
+# Function to evolve a Pokémon
+def evolve_pokemon(pokemon):
+    pokemon.name += " (Evolved)"
+    pokemon.type = "Super"  # Example: Evolved Pokémon type
+
+def main():
+    # Seed for random number generation
+    random.seed()
+
+    # Create a list of Pokémon
+    all_pokemons = [
+        {"Pikachu", "Electric", 1, 0},
+        {"Charmander", "Fire", 1, 0},
+        {"Squirtle", "Water", 1, 0},
+        {"Bulbasaur", "Grass", 1, 0},
+        {"Jigglypuff", "Normal", 1, 0},
+        {"Meowth", "Normal", 1, 0},
+        {"Psyduck", "Water", 1, 0},
+        {"Growlithe", "Fire", 1, 0},
+        {"Geodude", "Rock", 1, 0},
+        {"Poliwag", "Water", 1, 0},
+        {"Abra", "Psychic", 1, 0},
+        {"Machop", "Fighting", 1, 0},
+        {"Tentacool", "Water", 1, 0},
+        {"Gastly", "Ghost", 1, 0},
+        {"Onix", "Rock", 1, 0},
+        {"Drowzee", "Psychic", 1, 0},
+        {"Krabby", "Water", 1, 0},
+        {"Voltorb", "Electric", 1, 0},
+        {"Exeggcute", "Grass", 1, 0},
+        {"Cubone", "Ground", 1, 0},
+        {"Hitmonlee", "Fighting", 1, 0},
+        {"Lickitung", "Normal", 1, 0},
+        {"Koffing", "Poison", 1, 0},
+        {"Rhyhorn", "Ground", 1, 0},
+        {"Chansey", "Normal", 1, 0},
+        {"Tangela", "Grass", 1, 0},
+        {"Kangaskhan", "Normal", 1, 0},
+        {"Horsea", "Water", 1, 0},
+        {"Goldeen", "Water", 1, 0},
+        {"Staryu", "Water", 1, 0},
+        {"Mr. Mime", "Psychic", 1, 0},
+        {"Scyther", "Bug/Flying", 1, 0},
+        {"Jynx", "Ice/Psychic", 1, 0},
+        {"Electabuzz", "Electric", 1, 0},
+        {"Magmar", "Fire", 1, 0},
+        {"Pinsir", "Bug", 1, 0},
+    ]
+
+    # Main game loop
+    while True:
+        print("\n--- Pokémon Training Game ---")
+        print("1. Display Pokémon")
+        print("2. Train Pokémon")
+        print("3. Quit")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            pokemon_index = int(input(f"Select a Pokémon (1-{len(all_pokemons)}): "))
+            if 1 <= pokemon_index <= len(all_pokemons):
+                display_pokemon(all_pokemons[pokemon_index - 1])
+            else:
+                print("Invalid Pokémon selection.")
+        elif choice == 2:
+            pokemon_index = int(input(f"Select a Pokémon to train (1-{len(all_pokemons)}): "))
+            if 1 <= pokemon_index <= len(all_pokemons):
+                train_pokemon(all_pokemons[pokemon_index - 1])
+            else:
+                print("Invalid Pokémon selection.")
+        elif choice == 3:
+            print("Quitting the game. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
