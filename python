@@ -78,7 +78,7 @@ def main():
         {"Jynx", "Ice/Psychic", 1, 0},
         {"Electabuzz", "Electric", 1, 0},
         {"Magmar", "Fire", 1, 0},
-        {"Pinsir", "Bug", 1, 0},
+        {"Pinsir", "Bug", 1, 0}
     ]
 
     # Main game loop
